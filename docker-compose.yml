@@ -1,8 +1,18 @@
+version: '3.8'
+
 services:
   web:
     build: .
-    ports:
-      - "8080:80"
-    volumes:
-      - .:/usr/share/nginx/html
     restart: always
+    # Exponemos el puerto 80 para que Coolify (Traefik) lo pueda ver.
+    expose:
+      - "80"
+    # IMPORTANTE: No usamos 'volumes' aquí para producción.
+    # Confiamos en que el Dockerfile ya copió los archivos.
+
+    # Configuración de salud (opcional pero recomendada para que Coolify sepa si está vivo)
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:80" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3

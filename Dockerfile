@@ -1,11 +1,14 @@
-# Use Nginx to serve the static files
+# Usamos una imagen ligera de Nginx
 FROM nginx:alpine
 
-# Copy static files to the nginx html directory
+# (Opcional) Borramos la página por defecto de Nginx para evitar conflictos
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copiamos TODOS los archivos de tu carpeta actual a la carpeta pública de Nginx
 COPY . /usr/share/nginx/html
 
-# Expose port 80
+# Exponemos el puerto 80 (interno del contenedor)
 EXPOSE 80
 
-# Start nginx
+# Comando de inicio
 CMD ["nginx", "-g", "daemon off;"]
