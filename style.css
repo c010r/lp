@@ -1,0 +1,235 @@
+:root {
+    --bg-dark: hsl(240, 10%, 4%);
+    --bg-soft: hsl(240, 10%, 8%);
+    --accent-red: hsl(0, 80%, 50%);
+    --accent-blue: hsl(190, 80%, 50%);
+    --text-primary: hsl(0, 0%, 95%);
+    --text-secondary: hsl(0, 0%, 70%);
+    --glass-bg: hsla(240, 10%, 10%, 0.7);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.brush-text {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 5rem;
+    color: var(--accent-red);
+    text-shadow: 0 0 20px hsla(0, 80%, 40%, 0.5);
+}
+
+.section {
+    padding: 100px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.05);
+}
+
+#main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+#main-nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+
+#main-nav a:hover {
+    color: var(--accent-red);
+}
+
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, hsl(0, 80%, 15%) 0%, var(--bg-dark) 80%);
+    position: relative;
+    margin-top: -80px;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '麒麟';
+    position: absolute;
+    font-size: 40rem;
+    font-family: 'Ma Shan Zheng', cursive;
+    color: hsla(0, 80%, 50%, 0.03);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--bg-dark));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid var(--accent-red);
+    color: var(--text-primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition);
+    background: transparent;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background: var(--accent-red);
+    box-shadow: 0 0 30px var(--accent-red);
+    color: white;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.menu-card {
+    background: var(--bg-soft);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid hsla(0, 0%, 100%, 0.05);
+    padding: 40px;
+    text-align: center;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border-color: var(--accent-blue);
+}
+
+.card-img {
+    display: none;
+    /* Removed for image-less version */
+}
+
+#img-yuzu {
+    background: none;
+}
+
+#img-matcha {
+    background: none;
+}
+
+.menu-card::before {
+    content: '飲';
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 4rem;
+    color: hsla(190, 80%, 50%, 0.1);
+    display: block;
+    margin-bottom: 20px;
+}
+
+.card-info {
+    padding: 25px;
+}
+
+.card-info h3 {
+    margin-bottom: 10px;
+    color: var(--accent-blue);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--accent-red);
+    margin-top: 10px;
+}
+
+.text-center::after {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+footer {
+    padding: 50px;
+    text-align: center;
+    border-top: 1px solid hsla(0, 0%, 100%, 0.05);
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .brush-text {
+        font-size: 3rem;
+    }
+
+    #main-nav {
+        padding: 20px;
+    }
+
+    #main-nav ul {
+        display: none;
+    }
+}
